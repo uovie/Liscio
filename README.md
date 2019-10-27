@@ -11,10 +11,11 @@ Liscio is a concise computational chemistry program owned by **uovie**. Currentl
 1. git clone https://github.com/uovie/Liscio.git
 2. cd Liscio
 3. make
+4. make install
 
 ## 2 Dependency
 
-Note that these implementations depend on the [Eigen](http://eigen.tuxfamily.org) and [Boost](https://www.boost.org/) libraries. Please correctly install them before compile.
+Note that these implementations depend on the [Eigen](http://eigen.tuxfamily.org) and [Boost](https://www.boost.org/) libraries, as well as [JSON for Modern C++](https://github.com/nlohmann/json). Please correctly install them before compilation.
 
 ## 3 Usage
 

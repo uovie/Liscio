@@ -125,12 +125,12 @@ namespace hes {
         auto ligd = [this, &i, &j](double xi) {
             return pow(sqrt(h_bar / (m * omega_s)) * xi + b, 2) * hermite(i, xi) * hermite(j, xi) * exp(-pow(xi, 2));
         }; // left integrand
-        double lint = boost::math::quadrature::trapezoidal(ligd, -100.0, 0.0, 1e-9); // left integral
+        double lint = boost::math::quadrature::trapezoidal(ligd, -10.0, 0.0, 1e-9); // left integral
 
         auto rigd = [this, &i, &j](double xi) {
             return pow(sqrt(h_bar / (m * omega_s)) * xi - b, 2) * hermite(i, xi) * hermite(j, xi) * exp(-pow(xi, 2));
         }; // right integrand
-        double rint = boost::math::quadrature::trapezoidal(rigd, 0.0, 100.0, 1e-9); // right integral
+        double rint = boost::math::quadrature::trapezoidal(rigd, 0.0, 10.0, 1e-9); // right integral
 
         rst += m * pow(omega_d, 2) / sqrt(pow(2, i + j + 2) * math::factorial(i) * math::factorial(j) * pi) * (lint + rint);
         return rst;
@@ -169,7 +169,7 @@ namespace hes {
         auto cigd = [this, &i, &j](double xi) {
             return pow(h_bar / (m * omega_s) * pow(xi, 2) - pow(b, 2), 2) * hermite(i, xi) * hermite(j, xi) * exp(-pow(xi, 2));
         }; // complete integrand
-        double cint = boost::math::quadrature::trapezoidal(cigd, -100.0, 100.0, 1e-9); // complete integral
+        double cint = boost::math::quadrature::trapezoidal(cigd, -10.0, 10.0, 1e-9); // complete integral
 
         rst += m * pow(omega_d, 2) / (sqrt(pow(2, i + j + 6) * math::factorial(i) * math::factorial(j) * pi) * pow(b, 2)) * cint;
         return rst;
@@ -190,7 +190,7 @@ namespace hes {
         auto cigd = [this, &i, &j](double xi) {
             return pow(xi, 2) * hermite(i, xi) * hermite(j, xi) * exp(-pow(xi, 2));
         }; // complete integrand
-        double cint = boost::math::quadrature::trapezoidal(cigd, -100.0, 100.0, 1e-9); // complete integral
+        double cint = boost::math::quadrature::trapezoidal(cigd, -10.0, 10.0, 1e-9); // complete integral
 
         rst += h_bar * pow(omega_d, 2) / (sqrt(pow(2, i + j + 2) * math::factorial(i) * math::factorial(j) * pi) * omega_s) * cint;
         return rst;

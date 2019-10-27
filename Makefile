@@ -2,25 +2,29 @@ CC   := g++
 INC  := -I include
 LIB  := 
 
-Program := Liscio
+EXE  := Liscio
 OBJ  := main.o base.o func.o easy.o nve.o
 
 VPATH = src lib/prime lib/math lib/hes lib/md
 
-.PHONY: all build_msg clean
+.PHONY: all build_msg install clean
 
-all: $(Program)
+all: $(EXE)
 
 build_msg:
-	@printf "#\n# Building $(Program)\n#\n"
+	@printf "#\n# Building $(EXE)\n#\n"
+
+$(OBJ): %.o : %.cpp
+	$(CC) -c $< -o $@ $(INC) $(LIB)
+
+$(EXE): build_msg $(OBJ)
+	$(CC) $(OBJ) -o $@ $(INC) $(LIB)
+	ls -hl $(EXE)
+	size $(EXE)
+
+install:
+	cp $(EXE) ~/bin/$(EXE)
+	@printf "Normal installation. Congratulations!\n"
 
 clean:
 	rm -f *.o
-
-$(OBJ): %.o : %.cpp
-	$(CC) -c $< -o $@ $(INC)
-
-$(Program): build_msg $(OBJ)
-	$(CC) $(OBJ) -o $@ $(INC) $(LIB)
-	ls -hl $(Program)
-	size $(Program)
