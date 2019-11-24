@@ -45,7 +45,7 @@ The outputs from Liscio are all written in binary format. If you want to view th
 
 ## 5 Supported function
 
-In the framework designed by us, those strange abbreviations may confuse you. So, we clarify them now. And hence you will have a certain knowledge of the supported functions of this program.
+The followings are the jobs that Liscio possesses at present.
 
 - hes: Hamiltonian eigen solve
   - sho_on_isw
@@ -59,6 +59,9 @@ In the framework designed by us, those strange abbreviations may confuse you. So
   - ekt_on_isw
 - md: molecular dynamics
   - md_nve_ver
+- rho: probability density
+  - sho_rho
+    - the widget `rho_exact.py` can be used to obtain exact solution
 
 ## 6 Manual
 

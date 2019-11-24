@@ -30,6 +30,8 @@ namespace prime {
     // constants
     constexpr auto pi = M_PIl;
     constexpr double h_bar = 1;
+	constexpr double k = 1.38064852e-23;
+	constexpr double a_u_energy = 4.359744650e-18;
 
     //------------------------------------------------------------------------//
 

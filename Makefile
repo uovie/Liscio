@@ -1,11 +1,11 @@
 CC   := g++
-INC  := -I include
+INC  := -I include -I ~/Documents/Development/usr/include
 LIB  := 
 
 EXE  := Liscio
-OBJ  := main.o base.o func.o easy.o nve.o
+OBJ  := main.o base.o func.o easy.o nve.o rho.o
 
-VPATH = src lib/prime lib/math lib/hes lib/md
+VPATH = src lib/prime lib/math lib/hes lib/md lib/density
 
 .PHONY: all build_msg install clean
 
