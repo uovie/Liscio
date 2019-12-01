@@ -61,7 +61,7 @@ The followings are the jobs that Liscio possesses at present.
   - md_nve_ver
 - rho: probability density
   - sho_rho
-    - the widget `rho_exact.py` can be used to obtain exact solution
+    - the widget `rho-exact-?.py` can be used to obtain exact solution
 
 ## 6 Manual
 

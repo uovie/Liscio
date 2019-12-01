@@ -9,7 +9,7 @@ m = 1728
 omega = 0.017709
 Ts = [1000, 300, 100, 0]
 
-crd = np.linspace(-1, 1, 200)
+mom = np.linspace(-15, 15, 5000)
 
 fig, ax = plt.subplots(2, 2)
 fig.suptitle(f"Density distribution")
@@ -20,10 +20,10 @@ for i in range(2):
         else:
             beta = 1 / (kB * Ts[i * 2 + j] / hartree)
             tanh = np.tanh(beta * hbar * omega / 2)
-        val = np.sqrt(m * omega * tanh / (np.pi * hbar)) * np.exp(-m * omega * np.power(crd, 2) * tanh / hbar)
-        ax[i, j].plot(crd, val, c='dodgerblue', lw=0.5, ls='-', alpha=0.8, label=f'$T = {Ts[i * 2 + j]}$')
-        ax[i, j].set_xlabel("$q$ (a.u.)")
+        val = np.sqrt(tanh / (np.pi * hbar * m * omega)) * np.exp(-np.power(mom, 2) * tanh / (hbar * m * omega))
+        ax[i, j].plot(mom, val, c='dodgerblue', lw=0.5, ls='-', alpha=0.8, label=f'$T = {Ts[i * 2 + j]}$')
+        ax[i, j].set_xlabel("$p$ (a.u.)")
         ax[i, j].set_ylabel("$\\rho$ (a.u.)")
         ax[i, j].legend(loc='upper right', prop={'size':6})
 fig.subplots_adjust(hspace=0.5, wspace=0.4)
-fig.savefig(f'sho_rho.png', dpi=500, bbox_inches='tight')
+fig.savefig(f'sho_rho_p.png', dpi=500, bbox_inches='tight')
